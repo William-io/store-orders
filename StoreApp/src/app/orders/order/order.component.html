@@ -3,12 +3,20 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>Pedido No.</label>
-                <input name="OrderNo" #OrderNo="ngModel" [(ngModel)]="service.formData.OrderNo" class="form-control">
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">#</div>
+                    </div>
+                    <input name="OrderNo" #OrderNo="ngModel" [(ngModel)]="service.formData.OrderNo" class="form-control"
+                        readonly>
+                </div>
             </div>
 
             <div class="form-group">
                 <label>Cliente</label>
-                <select name="CustomerID" #CustomerID="ngModel" [(ngModel)]="service.formData.CustomerID" class="form-control">
+                <select name="CustomerID" #CustomerID="ngModel" [(ngModel)]="service.formData.CustomerID"
+                    class="form-control">
                     <option value="0">Selecione</option>
                 </select>
             </div>
@@ -18,17 +26,54 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>Método de Pagamento</label>
-                <select name="PaymentMethod" #PaymentMethod="ngModel" [(ngModel)]="service.formData.PaymentMethod" class="form-control">
-                    <option value="">Selecione</option>
+                <select name="PaymentMethod" #PaymentMethod="ngModel" [(ngModel)]="service.formData.PaymentMethod"
+                    class="form-control">
+                    <option value="">-Select-</option>
+                    <option value="Cash">Dinheiro</option>
+                    <option value="Card">Cartão</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>Total Geral</label>
-                <input name="GrandTotal" #GrandTotal="ngModel" [(ngModel)]="service.formData.GrandTotal" class="form-control">
-            </div>
 
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">#</div>
+                    </div>
+                    <input name="GrandTotal" #GrandTotal="ngModel" [(ngModel)]="service.formData.GrandTotal"
+                        class="form-control" readonly>
+                </div>
+            </div>
         </div>
+        <!--order items-->
+        <table class="table table-borderless">
+            <thead class="thead-light">
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Total</th>
+                <th></th>
+            </thead>
+
+            <tbody>
+                <tr *ngIf="service.orderItems.length==0">
+                    <td class="font-italic text-center" colspan="5">
+                        Nenhum item adicionado a esse pedido.
+                    </td>
+                </tr>
+
+                <tr *ngFor="let item of service.orderItems">
+
+                </tr>
+
+
+
+            </tbody>
+
+        </table>
+        <!--order items, final-->
+
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-dark"><i class="fa fa-database" aria-hidden="true"></i> Submit</button>

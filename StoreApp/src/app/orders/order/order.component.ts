@@ -12,11 +12,13 @@ export class OrderComponent implements OnInit {
 
   constructor(public service: OrderService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.resetForm();
   }
 
-  resetForm(form: NgForm) {
-    form.resetForm();
+  resetForm(form?: NgForm) {
+    if (form = null)
+      form.resetForm();
     this.service.formData = {
       OrderID: null,
       OrderNo: Math.floor(100000 + Math.random() * 900000).toString(),
@@ -24,6 +26,7 @@ export class OrderComponent implements OnInit {
       PaymentMethod: '',
       GrandTotal: 0,
     };
+    this.service.orderItems = [];
   }
 
 }
