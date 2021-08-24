@@ -11,7 +11,7 @@ using Store.Infra.Context;
 namespace Store.Api.Controllers
 {
     [ApiController]
-    [Route("api/[Controller]")]
+    [Route("api/[controller]")]
     public class CustomerController : ControllerBase
     {
         private readonly StoreContext _context;
@@ -104,6 +104,6 @@ namespace Store.Api.Controllers
         {
             return _context.Customers.Any(e => e.Id == id);
         }
-       
+
     }
 }

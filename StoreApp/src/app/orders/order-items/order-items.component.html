@@ -3,8 +3,10 @@
 <form #form="ngForm" autocomplete="off">
     <div class="form-group">
         <label>Lista de produtos</label>
-        <select name="ItemID" #ItemID="ngModel" [(ngModel)]="formData.ItemID" class="form-control" class="form-control">
+        <!-- <pre>{{itemList | json}}</pre> -->
+        <select name="Id" #Id="ngModel" [(ngModel)]="formData.Id" class="form-control" class="form-control">
             <option value="0">Selecione p/continuar</option>
+            <option *ngFor="let item of itemList" value="{{item.id}}">{{item.name}}</option>
         </select>
     </div>
 
