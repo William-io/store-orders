@@ -1,1 +1,43 @@
-<p>order-items works!</p>
+<h4 class="display-4">Fazer pedido</h4>
+<hr>
+<form #form="ngForm" autocomplete="off">
+    <div class="form-group">
+        <label>Lista de produtos</label>
+        <select name="ItemID" #ItemID="ngModel" [(ngModel)]="formData.ItemID" class="form-control" class="form-control">
+            <option value="0">Selecione p/continuar</option>
+        </select>
+    </div>
+
+    <div class="form row">
+        <div class="form-group col-md-6">
+            <label>Preço</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">R$:</div>
+                </div>
+                <input name="Price" #Price="ngModel" [(ngModel)]="formData.Price" class="form-control" readonly>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>Quantidade</label>
+            <input name="Quantity" #Quantity="ngModel" [(ngModel)]="formData.Quantity" class="form-control" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Total</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">R$:</div>
+            </div>
+            <input name="Total" #Total="ngModel" [(ngModel)]="formData.Total" class="form-control" readonly>
+        </div>
+    </div>
+    <div class="form group">
+        <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Adicionar</button>
+        <button type="button" class="btn btn-outline-dark ml-1"><i class="fa fa-close"></i> Fecha</button>
+    </div>
+
+
+</form>

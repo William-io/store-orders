@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { OrderService } from 'src/app/shared/order.service';
 
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { OrderItemsComponent } from '../order-items/order-items.component';
+
+
+
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
@@ -10,7 +15,8 @@ import { OrderService } from 'src/app/shared/order.service';
 })
 export class OrderComponent implements OnInit {
 
-  constructor(public service: OrderService) { }
+  constructor(public service: OrderService,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.resetForm();
@@ -27,6 +33,16 @@ export class OrderComponent implements OnInit {
       GrandTotal: 0,
     };
     this.service.orderItems = [];
+  }
+
+
+  AddOrEditOrderItem(orderItemIndex, OrderID) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    dialogConfig.width = "50%";
+    dialogConfig.data = { orderItemIndex, OrderID };
+    this.dialog.open(OrderItemsComponent, dialogConfig);
   }
 
 }

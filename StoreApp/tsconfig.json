@@ -5,7 +5,7 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    //"strict": false, //
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -14,6 +14,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    //"noImplicitAny": false, //
     "strictPropertyInitialization": false, //Set of Initialization of Property
     "strictNullChecks": false, //When strictNullChecks is false, null and undefined are effectively ignored by the language. This can lead to unexpected errors at runtime.
     "target": "es2017",
